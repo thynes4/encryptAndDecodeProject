@@ -1,0 +1,42 @@
+
+
+#include <stdio.h>
+
+int main(void) {
+  int i = 7, b, c = 7, cc = 0, wc = 0, tc = 0, lc = 0;
+
+  while ((b = getchar()) != EOF) {
+
+    if (i < 0)
+    {
+      putchar(c);
+      if (c == ' ') wc++;
+      i = 7;
+      c = 0;
+      cc++;
+    }
+
+    if (b == '\n')
+    {
+      lc++;
+      i=7;
+      printf(" (%d,%d)\n",lc,cc);
+      tc += cc;
+      cc = 0;
+      continue;
+    }
+
+    if (b == '1')
+    {
+      c |= 1 << i;
+      i--;
+      continue;
+    }
+
+    if (b == '0')
+    {
+      i--;
+      continue;
+    }
+  }
+  printf("\nThere are %d characters, %d words, %d lines\
